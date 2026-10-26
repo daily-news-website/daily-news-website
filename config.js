@@ -1,5 +1,2 @@
-/* Frontend-safe Supabase configuration only. Do not put service_role or API secrets here. */
-window.DAILY_NEWS_CONFIG = {
-  SUPABASE_URL: "PASTE_YOUR_SUPABASE_PROJECT_URL_HERE",
-  SUPABASE_ANON_KEY: "PASTE_YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY_HERE"
-};
+lwindow.SUPABASE_URL = "https://ybfowebnidkpcvsglzgk.supabase.co";
+window.SUPABASE_ANON_KEY = "sb_publishable_tImBFD9RtmD6aUVodbmxVw_G-PP2ovo";
