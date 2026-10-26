@@ -1,0 +1,9 @@
+{
+  "name": "daily-news-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Daily News Netlify + Supabase site",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0"
+  }
+}
