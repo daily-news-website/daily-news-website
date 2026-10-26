@@ -1,27 +1,318 @@
 <!doctype html>
 <html lang="bn">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#102b25"><title>Daily News | সর্বশেষ খবর</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102b25">
+<meta name="description" content="বাংলাদেশ ও বিশ্বের সর্বশেষ সংবাদ পড়ুন Daily News-এ।">
+<title>Daily News | সর্বশেষ খবর</title>
+
+<link rel="icon" href="/file_00000000094482118023ec82ab99980a.png">
 <link rel="stylesheet" href="/style.css">
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/config.js"></script><script defer src="/script.js"></script>
+<script src="/config.js"></script>
+<script defer src="/script.js"></script>
 </head>
+
 <body>
-<header><a class="brand" href="/"><span class="mark">DN</span><span>DAILY <b>NEWS</b><small>সত্যের পথে, খবরের সাথে</small></span></a><nav><a href="/">হোম</a><a href="#latest">সর্বশেষ</a><button id="adminOpen">Admin Login</button></nav></header>
-<div class="ticker"><b>ব্রেকিং</b><span>বাংলাদেশ ও বিশ্বের সর্বশেষ খবর জানতে Daily News-এর সঙ্গে থাকুন।</span></div>
+
+<header>
+  <a class="brand" href="/">
+    <img
+      src="/file_00000000094482118023ec82ab99980a.png"
+      alt="Daily News Logo"
+      class="brand-logo"
+    >
+    <span>
+      DAILY <b>NEWS</b>
+      <small>সত্যের পথে, খবরের সাথে</small>
+    </span>
+  </a>
+
+  <nav>
+    <a href="/">হোম</a>
+    <a href="#latest">সর্বশেষ</a>
+    <button id="adminOpen" type="button">Admin Login</button>
+  </nav>
+</header>
+
+<div class="ticker">
+  <b>ব্রেকিং</b>
+  <span>বাংলাদেশ ও বিশ্বের সর্বশেষ খবর জানতে Daily News-এর সঙ্গে থাকুন।</span>
+</div>
+
 <main class="wrap">
+
 <section id="homeView">
-<div class="hero"><div><p class="eyebrow">বাংলাদেশ • আন্তর্জাতিক • সর্বশেষ</p><h1>খবর জানুন,<br><em>সঠিক তথ্যের সাথে</em></h1><p>দেশ-বিদেশের গুরুত্বপূর্ণ সংবাদ, এক জায়গায়।</p><a class="cta" href="#latest">সর্বশেষ খবর পড়ুন ↓</a></div><div class="hero-card"><span>● LIVE UPDATE</span><h2>আপনার প্রতিদিনের সংবাদ মাধ্যম</h2><p>নিজস্ব সংবাদ ও উৎস-উল্লেখসহ সংবাদ আপডেট।</p></div></div>
-<div class="cats" id="categories"><button class="active" data-category="all">সব খবর</button><button data-category="জাতীয়">জাতীয়</button><button data-category="রাজনীতি">রাজনীতি</button><button data-category="আন্তর্জাতিক">আন্তর্জাতিক</button><button data-category="খেলাধুলা">খেলাধুলা</button><button data-category="প্রযুক্তি">প্রযুক্তি</button><button data-category="বিনোদন">বিনোদন</button></div>
-<section id="latest"><div class="heading"><div><p class="eyebrow">আপডেট থাকুন</p><h2>সর্বশেষ সংবাদ</h2></div><input id="searchInput" placeholder="খবর খুঁজুন…"><button id="searchBtn">খুঁজুন</button></div><p id="statusMessage">খবর লোড হচ্ছে…</p><div id="newsGrid" class="grid"></div><button id="loadMore" class="cta hidden">আরও খবর দেখুন</button></section>
+
+  <div class="hero">
+    <div>
+      <p class="eyebrow">বাংলাদেশ • আন্তর্জাতিক • সর্বশেষ</p>
+      <h1>খবর জানুন,<br><em>সঠিক তথ্যের সাথে</em></h1>
+      <p>দেশ-বিদেশের গুরুত্বপূর্ণ সংবাদ, এক জায়গায়।</p>
+      <a class="cta" href="#latest">সর্বশেষ খবর পড়ুন ↓</a>
+    </div>
+
+    <div class="hero-card">
+      <span>● LIVE UPDATE</span>
+      <h2>আপনার প্রতিদিনের সংবাদ মাধ্যম</h2>
+      <p>নিজস্ব সংবাদ ও নির্ভরযোগ্য উৎস-উল্লেখসহ সংবাদ আপডেট।</p>
+    </div>
+  </div>
+
+  <div class="cats" id="categories">
+    <button class="active" data-category="all">সব খবর</button>
+    <button data-category="জাতীয়">জাতীয়</button>
+    <button data-category="রাজনীতি">রাজনীতি</button>
+    <button data-category="আন্তর্জাতিক">আন্তর্জাতিক</button>
+    <button data-category="খেলাধুলা">খেলাধুলা</button>
+    <button data-category="প্রযুক্তি">প্রযুক্তি</button>
+    <button data-category="বিনোদন">বিনোদন</button>
+    <button data-category="শিক্ষা">শিক্ষা</button>
+    <button data-category="স্বাস্থ্য">স্বাস্থ্য</button>
+    <button data-category="অর্থনীতি">অর্থনীতি</button>
+  </div>
+
+  <section id="latest">
+    <div class="heading">
+      <div>
+        <p class="eyebrow">আপডেট থাকুন</p>
+        <h2>সর্বশেষ সংবাদ</h2>
+      </div>
+
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="খবর খুঁজুন…"
+        aria-label="খবর খুঁজুন"
+      >
+
+      <button id="searchBtn" type="button">খুঁজুন</button>
+    </div>
+
+    <p id="statusMessage">খবর লোড হচ্ছে…</p>
+
+    <div id="newsGrid" class="grid"></div>
+
+    <button id="loadMore" class="cta hidden" type="button">
+      আরও খবর দেখুন
+    </button>
+  </section>
+
 </section>
-<section id="singleView" class="hidden"><button id="backHome" class="plain">← সব খবর</button><article id="singleArticle"></article></section>
+
+<section id="singleView" class="hidden">
+  <button id="backHome" class="plain" type="button">← সব খবর</button>
+  <article id="singleArticle"></article>
+</section>
+
 </main>
-<footer><b>DAILY <em>NEWS</em></b><p>সঠিক তথ্য, দায়িত্বশীল সংবাদ প্রকাশ।</p><small>© <span id="year"></span> Daily News. সর্বস্বত্ব সংরক্ষিত।</small></footer>
-<div id="adminModal" class="modal hidden"><div class="modal-card"><button class="close" data-close="adminModal">×</button>
-<div id="loginPanel"><p class="eyebrow">RESTRICTED ACCESS</p><h2>Admin Login</h2><form id="loginForm"><label>ইমেইল<input id="loginEmail" type="email" required></label><label>পাসওয়ার্ড<input id="loginPassword" type="password" required></label><button class="cta" type="submit">লগইন করুন</button><p id="loginError" class="error"></p></form></div>
-<div id="dashboardPanel" class="hidden"><div class="dashhead"><h2>Admin Dashboard</h2><button id="logoutBtn" class="plain">Logout</button></div><div class="tabs"><button data-tab="editor">নতুন পোস্ট</button><button data-tab="manage">পোস্ট ম্যানেজ</button></div>
-<section id="editorTab"><form id="postForm"><input id="postId" type="hidden"><label>খবরের শিরোনাম *<input id="postTitle" maxlength="180" required></label><div class="twocol"><label>বিভাগ<select id="postCategory"><option>জাতীয়</option><option>রাজনীতি</option><option>আন্তর্জাতিক</option><option>খেলাধুলা</option><option>প্রযুক্তি</option><option>বিনোদন</option><option>শিক্ষা</option><option>স্বাস্থ্য</option><option>অর্থনীতি</option><option>অন্যান্য</option></select></label><label>মিডিয়া টাইপ<select id="mediaType"><option value="none">শুধু লেখা</option><option value="image">ছবি</option><option value="video">ভিডিও</option></select></label></div><label>খবর / ক্যাপশন *<textarea id="postCaption" rows="5" required></textarea></label><label>ছবি বা ভিডিও আপলোড<input id="mediaFile" type="file" accept="image/*,video/mp4,video/webm,video/quicktime"></label><label>অথবা মিডিয়া URL<input id="mediaUrl" type="url" placeholder="https://..."></label><div class="twocol"><label>প্রকাশের তারিখ ও সময়<input id="publishedAt" type="datetime-local"></label><label>স্ট্যাটাস<select id="postStatus"><option value="published">প্রকাশিত</option><option value="draft">খসড়া</option></select></label></div><label>দায়বদ্ধতা / Disclaimer<input id="postDisclaimer" maxlength="500"></label><div class="actions"><button class="cta" type="submit" id="savePostBtn">পোস্ট সংরক্ষণ করুন</button><button class="plain" type="button" id="resetPostBtn">ফর্ম পরিষ্কার</button></div><p id="postFeedback"></p></form></section><section id="manageTab" class="hidden"><div class="dashhead"><h3>পোস্ট ম্যানেজ</h3><button id="refreshPosts" class="plain">Refresh</button></div><div id="adminPostList"></div></section></div>
-</div></div><div id="toast" class="toast hidden"></div>
-</body></html>
+
+<footer>
+  <a href="/" class="footer-brand">
+    <img
+      src="/file_00000000094482118023ec82ab99980a.png"
+      alt="Daily News"
+      class="footer-logo"
+    >
+    <b>DAILY <em>NEWS</em></b>
+  </a>
+
+  <p>সঠিক তথ্য, দায়িত্বশীল সংবাদ প্রকাশ।</p>
+
+  <small>
+    © <span id="year"></span> Daily News. সর্বস্বত্ব সংরক্ষিত।
+  </small>
+</footer>
+
+<!-- ADMIN LOGIN MODAL -->
+<div id="adminModal" class="modal hidden">
+  <div class="modal-card">
+
+    <button class="close" data-close="adminModal" type="button">×</button>
+
+    <div id="loginPanel">
+      <p class="eyebrow">RESTRICTED ACCESS</p>
+      <h2>Admin Login</h2>
+
+      <form id="loginForm">
+        <label>
+          ইমেইল
+          <input id="loginEmail" type="email" autocomplete="username" required>
+        </label>
+
+        <label>
+          পাসওয়ার্ড
+          <input id="loginPassword" type="password" autocomplete="current-password" required>
+        </label>
+
+        <button class="cta" type="submit">লগইন করুন</button>
+
+        <p id="loginError" class="error"></p>
+      </form>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div id="dashboardPanel" class="hidden">
+
+      <div class="dashhead">
+        <h2>Admin Dashboard</h2>
+        <button id="logoutBtn" class="plain" type="button">Logout</button>
+      </div>
+
+      <div class="tabs">
+        <button data-tab="editor" type="button">নতুন পোস্ট</button>
+        <button data-tab="manage" type="button">পোস্ট ম্যানেজ</button>
+      </div>
+
+      <!-- NEW POST EDITOR -->
+      <section id="editorTab">
+
+        <form id="postForm">
+          <input id="postId" type="hidden">
+
+          <label>
+            খবরের শিরোনাম *
+            <input id="postTitle" maxlength="180" required>
+          </label>
+
+          <div class="twocol">
+            <label>
+              বিভাগ
+              <select id="postCategory">
+                <option>জাতীয়</option>
+                <option>রাজনীতি</option>
+                <option>আন্তর্জাতিক</option>
+                <option>খেলাধুলা</option>
+                <option>প্রযুক্তি</option>
+                <option>বিনোদন</option>
+                <option>শিক্ষা</option>
+                <option>স্বাস্থ্য</option>
+                <option>অর্থনীতি</option>
+                <option>অন্যান্য</option>
+              </select>
+            </label>
+
+            <label>
+              মিডিয়া টাইপ
+              <select id="mediaType">
+                <option value="none">শুধু লেখা</option>
+                <option value="image">ছবি</option>
+                <option value="video">ভিডিও</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            খবর / ক্যাপশন *
+            <textarea id="postCaption" rows="5" required></textarea>
+          </label>
+
+          <label>
+            ছবি বা ভিডিও আপলোড
+            <input
+              id="mediaFile"
+              type="file"
+              accept="image/*,video/mp4,video/webm,video/quicktime"
+            >
+          </label>
+
+          <label>
+            অথবা মিডিয়া URL
+            <input id="mediaUrl" type="url" placeholder="https://...">
+          </label>
+
+          <div class="twocol">
+            <label>
+              প্রকাশের তারিখ ও সময়
+              <input id="publishedAt" type="datetime-local">
+            </label>
+
+            <label>
+              স্ট্যাটাস
+              <select id="postStatus">
+                <option value="published">প্রকাশিত</option>
+                <option value="draft">খসড়া</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Disclaimer
+            <input id="postDisclaimer" maxlength="500">
+          </label>
+
+          <div class="actions">
+            <button class="cta" type="submit" id="savePostBtn">
+              পোস্ট সংরক্ষণ করুন
+            </button>
+
+            <button class="plain" type="button" id="resetPostBtn">
+              ফর্ম পরিষ্কার
+            </button>
+          </div>
+
+          <p id="postFeedback"></p>
+        </form>
+
+      </section>
+
+      <!-- MANAGE POSTS -->
+      <section id="manageTab" class="hidden">
+
+        <div class="dashhead">
+          <h3>পোস্ট ম্যানেজ</h3>
+          <button id="refreshPosts" class="plain" type="button">Refresh</button>
+        </div>
+
+        <div id="adminPostList"></div>
+
+      </section>
+
+    </div>
+
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<style>
+.brand-logo {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.footer-logo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+@media (max-width: 600px) {
+  .brand-logo {
+    width: 42px;
+    height: 42px;
+  }
+}
+</style>
+
+</body>
+                </html>
